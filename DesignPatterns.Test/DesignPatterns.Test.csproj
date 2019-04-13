@@ -25,7 +25,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DesignPatterns\DesignPatterns.csproj" />
+    <Folder Include="Behavioral\" />
+    <Folder Include="Creational\Factories\Exercises\" />
+    <Folder Include="Structural\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DesignPatterns\DesignPatterns.Code.csproj" />
   </ItemGroup>
 
 </Project>

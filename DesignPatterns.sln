@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{4AA9AF93-BA32-462C-9F58-210F6DEFB392}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.Test", "DesignPatterns.Test\DesignPatterns.Test.csproj", "{4AA9AF93-BA32-462C-9F58-210F6DEFB392}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Playground", "Playground\Playground.csproj", "{21F45770-9313-4D4B-A8A2-AC8669CEC1C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.Playground", "DesignPatterns.Playground\DesignPatterns.Playground.csproj", "{21F45770-9313-4D4B-A8A2-AC8669CEC1C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns", "DesignPatterns\DesignPatterns.csproj", "{AF89C397-3CC3-40B0-A0E5-2A1535B8229B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.Code", "DesignPatterns.Code\DesignPatterns.Code.csproj", "{AF89C397-3CC3-40B0-A0E5-2A1535B8229B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

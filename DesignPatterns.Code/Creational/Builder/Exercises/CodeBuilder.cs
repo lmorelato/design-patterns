@@ -2,37 +2,38 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DesignPatterns.Builder.Exercises
+namespace DesignPatterns.Code.Creational.Builder.Exercises
 {
     public sealed class CodeBuilder
     {
-        private readonly string _className;
-        private readonly IList<(string Name, string Type)> _classFields;
         private const int IndentSpaceSize = 4;
+        private readonly string className;
+        private readonly IList<(string Name, string Type)> classFields;
 
         public CodeBuilder(string className)
         {
-            _className = className ?? throw new ArgumentNullException(nameof(className));
-            _classFields = new List<(string Name, string Type)>();
+            this.className = className ?? throw new ArgumentNullException(nameof(className));
+            this.classFields = new List<(string Name, string Type)>();
         }
 
         public CodeBuilder AddField(string name, string type)
         {
-            if (name == null) throw new ArgumentNullException(nameof(name));
-            if (type == null) throw new ArgumentNullException(nameof(type));
-            _classFields.Add((name, type));
+            name = name ?? throw new ArgumentNullException(nameof(name));
+            type = type ?? throw new ArgumentNullException(nameof(type));
+            this.classFields.Add((name, type));
             return this;
         }
 
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.AppendLine($"public class {_className}");
+            sb.AppendLine($"public class {this.className}");
             sb.AppendLine("{");
-            foreach (var f in _classFields)
+            foreach (var f in this.classFields)
             {
                 sb.AppendLine($"{IndentFor(1)}public {f.Type} {f.Name};");
             }
+
             sb.AppendLine("}");
             return sb.ToString();
         }
