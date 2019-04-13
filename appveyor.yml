@@ -20,15 +20,15 @@ after_build:
   # For once the build has completed
 artifacts:
  - path: '.\DesignPatterns.Code\bin\debug\netcoreapp2.2\publish'
-   name: WebSite
-   type: WebDeployPackage
+   name: App
+   type: zip
 clone_depth: 1
 test_script:
   # restore packages for our unit tests
   - cmd: dotnet restore ./DesignPatterns.Test/DesignPatterns.Test.csproj --verbosity m
   # run the unit tests (requires changing into the test directory)
   - cmd: cd DesignPatterns.Test
-  - cmd: dotnet xunit
+  - cmd: dotnet test
 on_finish :
   # any cleanup in here
 deploy: off
