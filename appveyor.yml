@@ -14,7 +14,7 @@ install:
   # Install repo specific stuff here
   # Installing code coverage tools
   - choco install opencover.portable
-  - choco install codecov
+  #- choco install codecov
   
 before_build:  
     # Display .NET Core version
@@ -49,7 +49,12 @@ test_script:
     #- OpenCover.Console.exe -target:"dotnet.exe" -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full ./DesignPatterns.Test/DesignPatterns.Test.csproj" -filter:"+[DesignPatterns.Code*]* -[DesignPatterns.Test*]*" -output:coverage.xml -oldStyle -register
     #- codecov -f .\coverage.xml -t ebdb80cb-f40a-403f-9545-7d25dfb5a2e4
     - cmd: cd DesignPatterns.Test
-    - OpenCover.Console.exe -target:"dotnet.exe" -targetargs:"test" -output:coverage.xml -oldStyle -register
+    - OpenCover.Console.exe 
+        -target:"dotnet.exe" 
+        -targetargs:"test" 
+        -output:coverage.xml 
+        -oldStyle 
+        -register
   
 on_finish :
     # any cleanup in here
