@@ -53,3 +53,8 @@ on_finish :
     # any cleanup in here
   
 deploy: off
+
+cache:
+    - C:\ProgramData\chocolatey\bin -> appveyor.yml
+    - C:\ProgramData\chocolatey\lib -> appveyor.yml
+    - packages -> **\packages.config
