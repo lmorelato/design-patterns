@@ -26,12 +26,11 @@
 
   <ItemGroup>
     <Folder Include="Behavioral\" />
-    <Folder Include="Creational\Factories\Exercises\" />
     <Folder Include="Structural\" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DesignPatterns\DesignPatterns.Code.csproj" />
+    <ProjectReference Include="..\DesignPatterns.Code\DesignPatterns.Code.csproj" />
   </ItemGroup>
 
 </Project>

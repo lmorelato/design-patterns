@@ -7,8 +7,10 @@ namespace DesignPatterns.Code.Creational.Builder.Exercises
     public sealed class CodeBuilder
     {
         private const int IndentSpaceSize = 4;
-        private readonly string className;
+
         private readonly IList<(string Name, string Type)> classFields;
+
+        private readonly string className;
 
         public CodeBuilder(string className)
         {
@@ -24,6 +26,11 @@ namespace DesignPatterns.Code.Creational.Builder.Exercises
             return this;
         }
 
+        public void Clear()
+        {
+            this.classFields.Clear();
+        }
+
         public override string ToString()
         {
             var sb = new StringBuilder();
@@ -31,7 +38,7 @@ namespace DesignPatterns.Code.Creational.Builder.Exercises
             sb.AppendLine("{");
             foreach (var f in this.classFields)
             {
-                sb.AppendLine($"{IndentFor(1)}public {f.Type} {f.Name};");
+                sb.AppendLine($"{CodeBuilder.IndentFor(1)}public {f.Type} {f.Name};");
             }
 
             sb.AppendLine("}");
@@ -40,7 +47,7 @@ namespace DesignPatterns.Code.Creational.Builder.Exercises
 
         private static string IndentFor(int n)
         {
-            return new string(' ', IndentSpaceSize * n);
+            return new string(' ', CodeBuilder.IndentSpaceSize * n);
         }
     }
 }
