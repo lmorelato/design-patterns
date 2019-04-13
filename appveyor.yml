@@ -9,6 +9,9 @@ init:
 install:
   # Install repo specific stuff here
 before_build:
+  # Installing code coverage tools
+  - choco install opencover.portable
+  - choco install codecov
   # Display .NET Core version
   - cmd: dotnet --version
   # Display minimal restore text
@@ -16,6 +19,9 @@ before_build:
 build_script:
   # output will be in ./DesignPatterns.Code/bin/debug/netcoreapp2.2/publish
   - cmd: dotnet publish ./DesignPatterns.Code/DesignPatterns.Code.csproj
+  # Running code coverage
+  - OpenCover.Console.exe -register:user -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full ./DesignPatterns.Test/DesignPatterns.Test.csproj.csproj" -filter:"+[DesignPatterns.Code*]* -[DesignPatterns.Test*]*" -output:".\my_app_coverage.xml"
+  - codecov -f .\valit_coverage.xml -t $(ebdb80cb-f40a-403f-9545-7d25dfb5a2e4)
 after_build:
   # For once the build has completed
 artifacts:
