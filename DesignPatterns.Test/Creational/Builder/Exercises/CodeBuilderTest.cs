@@ -2,8 +2,6 @@
 
 using FluentAssertions;
 
-using NFluent;
-
 using Xunit;
 
 namespace DesignPatterns.Test.Creational.Builder.Exercises
@@ -13,22 +11,16 @@ namespace DesignPatterns.Test.Creational.Builder.Exercises
         [Fact]
         public void AddField_ValidFields_PrintClass()
         {
-            // Arrange:
+            // Arrange
             var builder = this.BuildSample();
 
-            // Act:
+            // Act
             var result = builder.ToString();
 
-            // Assert: Which library is more intuitive?
-            // Fluent Assertions
+            // Assert
             result.Should().NotBeNull()
                 .And.NotBeEmpty()
                 .And.ContainAll("public class SomePerson", "public string Name;", "public int Age;");
-
-            // NFluent
-            Check.That(result).IsNotNull()
-                .And.IsNotEmpty()
-                .And.Contains("public class SomePerson", "public string Name;", "public int Age;");
         }
 
         [Fact]
