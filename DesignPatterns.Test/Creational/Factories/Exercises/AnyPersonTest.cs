@@ -26,7 +26,7 @@ namespace DesignPatterns.Test.Creational.Factories.Exercises
 
             personTwo.Should().NotBeNull();
             personTwo.Id.Should().BeGreaterThan(1);
-            personTwo.Name.Should().NotBeNullOrWhiteSpace().And.Be(personOneName);
+            personTwo.Name.Should().NotBeNullOrWhiteSpace().And.Be(personTwoName);
         }
     }
 }
