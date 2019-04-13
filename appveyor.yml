@@ -46,8 +46,8 @@ test_script:
     # - cmd: dotnet test
     
     # Running code coverage
-    - OpenCover.Console.exe -target:"dotnet.exe" -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full .\DesignPatterns.Test\DesignPatterns.Test.csproj" -filter:"+[DesignPatterns.Code*]* -[DesignPatterns.Test*]*" -output:coverage.xml -oldStyle -register:user 
-    - codecov -f .\coverage.xml -t ebdb80cb-f40a-403f-9545-7d25dfb5a2e4
+    - OpenCover.Console.exe -target:"dotnet.exe" -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full ./DesignPatterns.Test/DesignPatterns.Test.csproj" -filter:"+[DesignPatterns.Code*]* -[DesignPatterns.Test*]*" -output:coverage.xml 
+    #- codecov -f .\coverage.xml -t ebdb80cb-f40a-403f-9545-7d25dfb5a2e4
   
 on_finish :
     # any cleanup in here
