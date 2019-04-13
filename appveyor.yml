@@ -31,7 +31,7 @@ after_build:
     # For once the build has completed
 
 artifacts:
-    - path: '.\DesignPatterns.Code\bin\debug\netcoreapp2.2\publish'
+    -path: '.\DesignPatterns.Code\bin\debug\netcoreapp2.2\publish'
     name: App
     type: zip
    
