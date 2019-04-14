@@ -10,12 +10,10 @@ before_build:
   - choco install codecov
   
 build_script:
-    - cmd: dotnet publish ./DesignPatterns.Code/DesignPatterns.Code.csproj
-    
+    - cmd: dotnet publish ./DesignPatterns.Code/DesignPatterns.Code.csproj    
     - OpenCover.Console.exe 
             -target:"dotnet.exe" 
-            -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full"
-            -filter:"+[*]DesignPatterns.* -[*.Test]* -[*.Playground]*"         
+            -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full"         
             -register:user 
             -output:.\coverage.xml        
             -oldStyle        
