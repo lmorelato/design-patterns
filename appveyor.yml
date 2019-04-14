@@ -51,8 +51,7 @@ test_script:
     - cmd: cd DesignPatterns.Test
     - OpenCover.Console.exe 
         -target:"dotnet.exe" 
-        -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full" 
-        #-targetargs:"test -c debug" 
+        -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full"         
         -register:user 
         -output:.\coverage.xml
         -hideskipped:All 
