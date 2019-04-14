@@ -12,6 +12,7 @@ before_build:
 build_script:    
     - OpenCover.Console.exe 
             -target:"dotnet.exe" 
+            -filter:"+[DesignPatterns.Code*]* -[DesignPatterns.Test*]*" 
             -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full"         
             -register:user 
             -output:.\coverage.xml        
@@ -23,7 +24,3 @@ test: off
 branches:
   only:
   - master
-
-cache:
-    - C:\ProgramData\chocolatey\bin -> appveyor.yml
-    - C:\ProgramData\chocolatey\lib -> appveyor.yml    
