@@ -10,23 +10,23 @@ before_build:
     - nuget restore
     - nuget install OpenCover -OutputDirectory packages -Version 4.7.922
 build_script:
-    - msbuild /verbosity:quiet DesignPatterns.sln    
+    - msbuild /verbosity:quiet DesignPatterns.sln
 test_script:
     - .\packages\OpenCover.4.7.922\tools\OpenCover.Console.exe
         -register:user
         -target:"dotnet.exe"
         -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full .\DesignPatterns.Test\DesignPatterns.Test.csproj"
         -output:"coverage.xml"
-        -filter:"+[*]DesignPatterns.* -[*.Test]*"         
+        -filter:"+[*]DesignPatterns.* -[*.Test]*"
         -oldStyle
 after_test:
   - ps: |
       $env:PATH = 'C:\msys64\usr\bin;' + $env:PATH
       Invoke-WebRequest -Uri 'https://codecov.io/bash' -OutFile codecov.sh
-      bash codecov.sh -f "coverage.xml"        
+      bash codecov.sh -f "coverage.xml"       
 branches:
   only:
   - master
 cache:
     '%USERPROFILE%\.nuget\packages'
-    'packages'
+    packages
