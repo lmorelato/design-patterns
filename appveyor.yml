@@ -9,8 +9,7 @@ before_build:
   - choco install opencover.portable
   - choco install codecov
   
-build_script:
-    - cmd: dotnet publish ./DesignPatterns.Code/DesignPatterns.Code.csproj    
+build_script:    
     - OpenCover.Console.exe 
             -target:"dotnet.exe" 
             -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full"         
