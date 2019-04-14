@@ -56,8 +56,7 @@ test_script:
         -output:.\coverage.xml
         -hideskipped:All 
         -returntargetcode 
-        -oldStyle        
-        -filter:"+[DesignPatterns.Code*]* -[DesignPatterns.Test*]*"        
+        -oldStyle                
           
 on_finish :
     # any cleanup in here
