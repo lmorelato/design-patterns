@@ -49,5 +49,5 @@ after_test:
       Invoke-WebRequest -Uri 'https://codecov.io/bash' -OutFile codecov.sh
       bash codecov.sh -f "coverage.xml"
 cache:
-    - '%USERPROFILE%\.nuget\packages' -> **\project.json, **\project.assets.json
+    - '%USERPROFILE%\.nuget\packages -> **\project.json, **\project.assets.json'
     - packages -> appveyor.yml
