@@ -14,7 +14,7 @@ install:
   # Install repo specific stuff here
   # Installing code coverage tools
   - choco install opencover.portable
-  #- choco install codecov
+  - choco install codecov
   
 before_build:  
     # Display .NET Core version
