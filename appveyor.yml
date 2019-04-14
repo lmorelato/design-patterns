@@ -20,6 +20,9 @@ branches:
 skip_tags:
     true
     
+clone_depth: 
+    1
+    
 init:
   # Good practise, because Windows line endings are different from Unix/Linux ones
   - cmd: git config --global core.autocrlf true
@@ -36,8 +39,15 @@ before_build:
     - cmd: dotnet restore ./DesignPatterns.Test/DesignPatterns.Test.csproj --verbosity m  
     
 build_script:
-    - msbuild /verbosity:quiet DesignPatterns.sln
-    
+    #- msbuild /verbosity:quiet DesignPatterns.sln
+    # output will be in ./DesignPatterns.Code/bin/debug/netcoreapp2.2/publish
+    - cmd: dotnet publish ./DesignPatterns.Code/DesignPatterns.Code.csproj
+
+artifacts:
+    - path: '.\DesignPatterns.Code\bin\debug\netcoreapp2.2\publish'
+      name: DesignPatternsArtifacts
+      type: zip
+      
 test_script:
     # Code coverage Report
     - .\packages\OpenCover.4.7.922\tools\OpenCover.Console.exe
