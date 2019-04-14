@@ -33,7 +33,7 @@ before_build:
     - cmd: dotnet --version    
     # Display minimal restore text
     - cmd: dotnet restore ./DesignPatterns.Code/DesignPatterns.Code.csproj --verbosity m   
-    - cmd: dotnet restore ./DesignPatterns.Code/DesignPatterns.Test.csproj --verbosity m  
+    - cmd: dotnet restore ./DesignPatterns.Test/DesignPatterns.Test.csproj --verbosity m  
     
 build_script:
     - msbuild /verbosity:quiet DesignPatterns.sln
