@@ -1,26 +1,31 @@
-version: '1.0.0.{build}'
-
-image: Visual Studio 2017
-  
-init:
-  - cmd: git config --global core.autocrlf true 
-  
-before_build:  
-  - choco install opencover.portable
-  - choco install codecov
-  
-build_script:    
-    - OpenCover.Console.exe 
-            -target:"dotnet.exe" 
-            -filter:"+[DesignPatterns.Code*]* -[DesignPatterns.Test*]*" 
-            -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full"         
-            -register:user 
-            -output:.\coverage.xml        
-            -oldStyle        
-    - codecov -f .\coverage.xml -t ebdb80cb-f40a-403f-9545-7d25dfb5a2e4 
-
-test: off
-
+version: 
+    '1.0.0.{build}'
+image: 
+    Visual Studio 2017
+configuration: 
+    Release
+skip_tags: 
+    true
+before_build:
+    - nuget restore
+    - nuget install OpenCover -OutputDirectory packages -Version 4.7.922
+build_script:
+    - msbuild /verbosity:quiet DesignPatterns.sln    
+test_script:
+    - .\packages\OpenCover.4.7.922\tools\OpenCover.Console.exe
+        -register:user
+        -target:"dotnet.exe"
+        -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full .\DesignPatterns.Test\DesignPatterns.Test.csproj"
+        -output:"coverage.xml" 
+        -filter:"+[*]DesignPatterns.* -[*.Test]*"           
+after_test:
+  - ps: |
+      $env:PATH = 'C:\msys64\usr\bin;' + $env:PATH
+      Invoke-WebRequest -Uri 'https://codecov.io/bash' -OutFile codecov.sh
+      bash codecov.sh -f "coverage.xml"        
 branches:
   only:
-  - master
+  - master  
+cache: 
+    '%USERPROFILE%\.nuget\packages'
+

@@ -5,12 +5,3 @@
 
 # Design Patterns
 Design Patterns Study/Exercises
-
-
-<a href="https://www.codefactor.io/repository/github/lmorelato/design-patterns">
-	<img src="https://www.codefactor.io/repository/github/lmorelato/design-patterns/badge" alt="CodeFactor" />
-</a>
-
-https://www.codefactor.io/repository/github/lmorelato/design-patterns
-
-https://img.shields.io/endpoint.svg?url=https://www.codefactor.io/repository/github/lmorelato/design-patterns/badge
