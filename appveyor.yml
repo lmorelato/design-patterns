@@ -16,8 +16,9 @@ test_script:
         -register:user
         -target:"dotnet.exe"
         -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full .\DesignPatterns.Test\DesignPatterns.Test.csproj"
-        -output:"coverage.xml" 
+        -output:"coverage.xml"         
         -filter:"+[*]DesignPatterns.* -[*.Test]*"           
+        -oldStyle
 after_test:
   - ps: |
       $env:PATH = 'C:\msys64\usr\bin;' + $env:PATH
