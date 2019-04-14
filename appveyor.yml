@@ -45,16 +45,14 @@ test_script:
     # - cmd: cd DesignPatterns.Test
     # - cmd: dotnet test
     
-    # Running code coverage        
-    - cmd: cd DesignPatterns.Test
+    # Running code coverage            
     - OpenCover.Console.exe 
-        -target:"dotnet.exe" 
-        -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full"         
-        -register:user 
-        -output:.\coverage.xml
-        -hideskipped:All 
-        -returntargetcode 
-        -oldStyle       
+            -target:"dotnet.exe" 
+            -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full .\DesignPatterns.Test\DesignPatterns.Test.csproj"
+            -filter:"+[DesignPatterns.Code]* -[DesignPatterns.Playground] -[DesignPatterns.Test]*"         
+            -register:user 
+            -output:.\coverage.xml        
+            -oldStyle        
     - codecov -f .\coverage.xml -t ebdb80cb-f40a-403f-9545-7d25dfb5a2e4        
           
 on_finish :
