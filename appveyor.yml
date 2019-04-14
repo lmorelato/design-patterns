@@ -4,8 +4,6 @@ image:
     Visual Studio 2017
 configuration:
     Release
-platform:
-    Any CPU
 environment:
   DOTNET_CLI_TELEMETRY_OPTOUT: 1
 branches:
@@ -32,7 +30,7 @@ build_script:
     # output will be in ./DesignPatterns.Code/bin/{platform}/{configuration}/netcoreapp2.2/publish
     - cmd: dotnet publish ./DesignPatterns.Code/DesignPatterns.Code.csproj -c release
 artifacts:
-    - path: '.\DesignPatterns.Code\bin\Any CPU\release\netcoreapp2.2\publish'
+    - path: '.\DesignPatterns.Code\bin\release\netcoreapp2.2\publish'
       name: Artifacts
       type: zip
 test_script:
