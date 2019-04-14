@@ -54,7 +54,8 @@ test_script:
         -output:.\coverage.xml
         -hideskipped:All 
         -returntargetcode 
-        -oldStyle              
+        -oldStyle 
+        -filter:"+[*Code]* -[*Test]*"        
     - codecov -f .\coverage.xml -t ebdb80cb-f40a-403f-9545-7d25dfb5a2e4        
           
 on_finish :
