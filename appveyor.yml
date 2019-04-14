@@ -48,8 +48,7 @@ test_script:
     # Running code coverage            
     - OpenCover.Console.exe 
             -target:"dotnet.exe" 
-            -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full .\DesignPatterns.Test\DesignPatterns.Test.csproj"
-            -filter:"+[DesignPatterns*]* -[DesignPatterns.Playground*]* -[DesignPatterns.Test*]*"         
+            -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full .\DesignPatterns.Test\DesignPatterns.Test.csproj"            
             -register:user 
             -output:.\coverage.xml        
             -oldStyle        
