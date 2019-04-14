@@ -1,0 +1,97 @@
+version: '1.0.0.{build}'
+
+image: Visual Studio 2017
+
+branches:
+  only:
+  - master
+  
+init:
+  # Good practise, because Windows line endings are different from Unix/Linux ones
+  - cmd: git config --global core.autocrlf true
+  
+install:
+  # Install repo specific stuff here
+  # Installing code coverage tools
+  - choco install opencover.portable
+  - choco install codecov
+  
+before_build:  
+    # Display .NET Core version
+    - cmd: dotnet --version
+
+    # Display minimal restore text
+    - cmd: dotnet restore ./DesignPatterns.Code/DesignPatterns.Code.csproj --verbosity m
+  
+build_script:
+    # output will be in ./DesignPatterns.Code/bin/debug/netcoreapp2.2/publish
+    - cmd: dotnet publish ./DesignPatterns.Code/DesignPatterns.Code.csproj
+
+after_build:
+    # For once the build has completed
+
+artifacts:
+    - path: '.\DesignPatterns.Code\bin\debug\netcoreapp2.2\publish'
+      name: App
+      type: zip
+   
+clone_depth: 1
+
+test_script:
+    # restore packages for our unit tests
+    - cmd: dotnet restore ./DesignPatterns.Test/DesignPatterns.Test.csproj --verbosity m
+
+    # run the unit tests (requires changing into the test directory)
+    # - cmd: cd DesignPatterns.Test
+    # - cmd: dotnet test
+    
+    # Running code coverage            
+    - OpenCover.Console.exe 
+            -target:"dotnet.exe" 
+            -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full"
+            -filter:"+[*]DesignPatterns.* -[*.Test]*"         
+            -register:user 
+            -output:.\coverage.xml        
+            -oldStyle        
+    - codecov -f .\coverage.xml -t ebdb80cb-f40a-403f-9545-7d25dfb5a2e4        
+          
+on_finish :
+    # any cleanup in here
+  
+deploy: off
+
+cache:
+    - C:\ProgramData\chocolatey\bin -> appveyor.yml
+    - C:\ProgramData\chocolatey\lib -> appveyor.yml    
+
+    
+    
+    
+    
+    
+version: '1.0.0.{build}'
+
+image: Visual Studio 2017
+  
+init:
+  - cmd: git config --global core.autocrlf true 
+  
+before_build:  
+  - choco install opencover.portable
+  - choco install codecov
+  
+build_script:    
+    - OpenCover.Console.exe 
+            -target:"dotnet.exe" 
+            -filter:"+[DesignPatterns.Code*]* -[DesignPatterns.Test*]*" 
+            -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full"         
+            -register:user 
+            -output:.\coverage.xml        
+            -oldStyle        
+    - codecov -f .\coverage.xml -t ebdb80cb-f40a-403f-9545-7d25dfb5a2e4 
+
+test: off
+
+branches:
+  only:
+  - master

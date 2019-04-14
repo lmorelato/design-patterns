@@ -29,10 +29,10 @@ before_build:
     - cmd: dotnet restore ./DesignPatterns.Test/DesignPatterns.Test.csproj --verbosity m
 build_script:
     #- msbuild /verbosity:quiet DesignPatterns.sln
-    # output will be in ./DesignPatterns.Code/bin/{configuration}/netcoreapp2.2/publish
+    # output will be in ./DesignPatterns.Code/bin/{platform}/{configuration}/netcoreapp2.2/publish
     - cmd: dotnet publish ./DesignPatterns.Code/DesignPatterns.Code.csproj -c release
 artifacts:
-    - path: '.\DesignPatterns.Code\bin\release\netcoreapp2.2\publish'
+    - path: '.\DesignPatterns.Code\bin\Any CPU\release\netcoreapp2.2\publish'
       name: Artifacts
       type: zip
 test_script:
