@@ -24,11 +24,16 @@ init:
   # Good practise, because Windows line endings are different from Unix/Linux ones
   - cmd: git config --global core.autocrlf true
   
+install:  
+  # Installing code coverage tools
+  - nuget install OpenCover -OutputDirectory packages -Version 4.7.922
+  
 before_build:
     # Display .NET Core version
-    - cmd: dotnet --version
-    - dotnet restore
-    - nuget install OpenCover -OutputDirectory packages -Version 4.7.922
+    - cmd: dotnet --version    
+    # Display minimal restore text
+    - cmd: dotnet restore ./DesignPatterns.Code/DesignPatterns.Code.csproj --verbosity m   
+    - cmd: dotnet restore ./DesignPatterns.Code/DesignPatterns.Test.csproj --verbosity m  
     
 build_script:
     - msbuild /verbosity:quiet DesignPatterns.sln
