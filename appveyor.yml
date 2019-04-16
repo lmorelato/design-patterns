@@ -17,7 +17,7 @@ init:
   # Good practise, because Windows line endings are different from Unix/Linux ones
   - cmd: git config --global core.autocrlf true
 install:
-  # Installing code coverage tools
+  # Installing code coverage tools..
   - nuget install OpenCover -OutputDirectory packages -Version 4.7.922
 before_build:
     # Display .NET Core version
