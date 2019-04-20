@@ -1,6 +1,6 @@
 version: '1.0.0.{build}'
 image: Visual Studio 2017
-configuration: Release
+configuration: release
 skip_tags: true
 clone_depth: 1
 environment: 
@@ -46,3 +46,5 @@ after_test:
 cache:
     - '%USERPROFILE%\.nuget\packages'
     - packages -> appveyor.yml
+
+    
