@@ -1,15 +1,20 @@
-version: '1.0.0.{build}'
-image: Visual Studio 2017
-configuration: release
-skip_tags: true
-clone_depth: 1
-environment: 
-    DOTNET_CLI_TELEMETRY_OPTOUT: 1
+version:
+    '1.0.0.{build}'
+image:
+    Visual Studio 2017
+configuration:
+    Release
+environment:
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
 branches:
   only:
   - master
+skip_tags:
+    true
+clone_depth:
+    1
 init:
-  # Good practice, because Windows line endings are different from Unix\Linux ones
+  # Good practise, because Windows line endings are different from Unix/Linux ones
   - cmd: git config --global core.autocrlf true
 install:
   # Installing code coverage tools..
@@ -23,7 +28,7 @@ before_build:
 build_script:
     # - msbuild \verbosity:quiet DesignPatterns.sln
     # output will be in .\src\DesignPatterns\bin\{platform}\{configuration}\netcoreapp2.2\publish
-    - cmd: dotnet publish .\src\DesignPatterns\DesignPatterns.csproj -c release
+    - cmd: dotnet publish .\src\DesignPatterns\DesignPatterns.csproj -c Release
 artifacts:
     - path: '.\src\DesignPatterns\bin\release\netcoreapp2.2\publish'
       name: artifacts
@@ -34,8 +39,7 @@ test_script:
         -register:user
         -target:"dotnet.exe"
         -targetargs:"test --logger:trx;LogFileName=results.trx \p:DebugType=full .\tests\DesignPatterns.Tests\DesignPatterns.Tests.csproj"
-        -output:"coverage.xml"
-        -filter:"+[*]* -[*.Tests]*"
+        -output:"coverage.xml"        
         -oldStyle
 after_test:
   # Uploading to codecov the code coverage report
