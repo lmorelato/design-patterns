@@ -35,7 +35,7 @@ test_script:
         -target:"dotnet.exe"
         -targetargs:"test --logger:trx;LogFileName=results.trx \p:DebugType=full .\tests\DesignPatterns.Tests\DesignPatterns.Tests.csproj"
         -output:"coverage.xml"
-        -filter:"+[*]DesignPatterns.* -[*.Tests]*"
+        -filter:"+[*]* -[*.Tests]*"
         -oldStyle
 after_test:
   # Uploading to codecov the code coverage report
