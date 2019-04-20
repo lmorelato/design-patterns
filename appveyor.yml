@@ -28,7 +28,7 @@ before_build:
 build_script:
     # - msbuild \verbosity:quiet DesignPatterns.sln
     # output will be in .\src\DesignPatterns\bin\{platform}\{configuration}\netcoreapp2.2\publish
-    - cmd: dotnet build .\src\DesignPatterns\DesignPatterns.csproj -c Release
+    # - cmd: dotnet build .\src\DesignPatterns\DesignPatterns.csproj -c Release
     - cmd: dotnet publish .\src\DesignPatterns\DesignPatterns.csproj -c Release
 artifacts:
     - path: '.\src\DesignPatterns\bin\release\netcoreapp2.2\publish'
@@ -39,17 +39,17 @@ test_script:
     - .\packages\OpenCover.4.7.922\tools\OpenCover.Console.exe
         -register:user
         -target:"dotnet.exe"
-        -targetargs:"test --logger:trx;LogFileName=results.trx \p:DebugType=full .\tests\DesignPatterns.Tests\DesignPatterns.Tests.csproj"
-        -output:"coverage.xml"        
+        -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full .\tests\DesignPatterns.Tests\DesignPatterns.Tests.csproj"
+        -output:"coverage.xml"
+        -filter:"+[*]* -[*.Tests]*"
         -oldStyle
 after_test:
   # Uploading to codecov the code coverage report
   - ps: |
       $env:PATH = 'C:\msys64\usr\bin;' + $env:PATH
-      Invoke-WebRequest -Uri 'https:\\codecov.io\bash' -OutFile codecov.sh
+      Invoke-WebRequest -Uri 'https://codecov.io/bash' -OutFile codecov.sh
       bash codecov.sh -f "coverage.xml"
 cache:
     - '%USERPROFILE%\.nuget\packages'
     - packages -> appveyor.yml
-
     
