@@ -1,6 +1,6 @@
 ﻿using Bogus;
 
-namespace DesignPatterns.Test
+namespace DesignPatterns.Tests
 {
     public class BaseTest
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DesignPatterns.Code.Creational.Factories.Exercises
+namespace DesignPatterns.Creational.Factory.Exercises
 {
     public sealed class AnyPerson
     {

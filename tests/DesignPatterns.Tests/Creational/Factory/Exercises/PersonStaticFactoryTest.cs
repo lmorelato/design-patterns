@@ -1,12 +1,12 @@
-﻿using DesignPatterns.Code.Creational.Factories.Exercises;
+﻿using DesignPatterns.Creational.Factory.Exercises;
 
 using FluentAssertions;
 
 using Xunit;
 
-namespace DesignPatterns.Test.Creational.Factories.Exercises
+namespace DesignPatterns.Tests.Creational.Factory.Exercises
 {
-    public class SomePersonTest : BaseTest
+    public class PersonStaticFactoryTest : BaseTest
     {
         [Fact]
         public void Create_ValidName_NewPerson()
@@ -16,8 +16,8 @@ namespace DesignPatterns.Test.Creational.Factories.Exercises
             var personTwoName = this.Faker.Name.FullName();
 
             // Act
-            var personOne = SomePerson.Create(personOneName);
-            var personTwo = SomePerson.Create(personTwoName);
+            var personOne = PersonStaticFactory.Create(personOneName);
+            var personTwo = PersonStaticFactory.Create(personTwoName);
 
             // Assert
             personOne.Should().NotBeNull();

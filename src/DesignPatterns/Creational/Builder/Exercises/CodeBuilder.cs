@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DesignPatterns.Code.Creational.Builder.Exercises
+namespace DesignPatterns.Creational.Builder.Exercises
 {
     public sealed class CodeBuilder
     {

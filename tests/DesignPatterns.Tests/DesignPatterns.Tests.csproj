@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DesignPatterns.Code\DesignPatterns.Code.csproj" />
+    <ProjectReference Include="..\DesignPatterns.Code\DesignPatterns.csproj" />
   </ItemGroup>
 
 </Project>

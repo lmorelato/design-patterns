@@ -1,10 +1,10 @@
-﻿using DesignPatterns.Code.Creational.Factories.Exercises;
+﻿using DesignPatterns.Creational.Factory.Exercises;
 
 using FluentAssertions;
 
 using Xunit;
 
-namespace DesignPatterns.Test.Creational.Factories.Exercises
+namespace DesignPatterns.Tests.Creational.Factory.Exercises
 {
     public class PersonFactoryTest : BaseTest
     {

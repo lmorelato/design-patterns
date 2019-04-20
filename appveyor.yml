@@ -1,20 +1,14 @@
-version:
-    '1.0.0.{build}'
-image:
-    Visual Studio 2017
-configuration:
-    Release
-environment:
-  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+version: '1.0.0.{build}'
+image: Visual Studio 2017
+configuration: Release
+environment: DOTNET_CLI_TELEMETRY_OPTOUT: 1
+skip_tags: true
+clone_depth: 1
 branches:
   only:
   - master
-skip_tags:
-    true
-clone_depth:
-    1
 init:
-  # Good practise, because Windows line endings are different from Unix/Linux ones
+  # Good practice, because Windows line endings are different from Unix\Linux ones
   - cmd: git config --global core.autocrlf true
 install:
   # Installing code coverage tools..
@@ -23,30 +17,30 @@ before_build:
     # Display .NET Core version
     - cmd: dotnet --version
     # Display minimal restore text
-    - cmd: dotnet restore ./DesignPatterns.Code/DesignPatterns.Code.csproj --verbosity m
-    - cmd: dotnet restore ./DesignPatterns.Test/DesignPatterns.Test.csproj --verbosity m
+    - cmd: dotnet restore .\src\DesignPatterns\DesignPatterns.csproj --verbosity m
+    - cmd: dotnet restore .\tests\DesignPatterns.Tests\DesignPatterns.Tests.csproj --verbosity m
 build_script:
-    #- msbuild /verbosity:quiet DesignPatterns.sln
-    # output will be in ./DesignPatterns.Code/bin/{platform}/{configuration}/netcoreapp2.2/publish
-    - cmd: dotnet publish ./DesignPatterns.Code/DesignPatterns.Code.csproj -c release
+    # - msbuild \verbosity:quiet DesignPatterns.sln
+    # output will be in .\src\DesignPatterns\bin\{platform}\{configuration}\netcoreapp2.2\publish
+    - cmd: dotnet publish .\src\DesignPatterns\DesignPatterns.csproj -c release
 artifacts:
-    - path: '.\DesignPatterns.Code\bin\release\netcoreapp2.2\publish'
-      name: Artifacts
+    - path: '.\src\DesignPatterns\bin\release\netcoreapp2.2\publish'
+      name: artifacts
       type: zip
 test_script:
     # Code coverage Report
     - .\packages\OpenCover.4.7.922\tools\OpenCover.Console.exe
         -register:user
         -target:"dotnet.exe"
-        -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full .\DesignPatterns.Test\DesignPatterns.Test.csproj"
+        -targetargs:"test --logger:trx;LogFileName=results.trx \p:DebugType=full .\tests\DesignPatterns.Tests\DesignPatterns.Tests.csproj"
         -output:"coverage.xml"
-        -filter:"+[*]DesignPatterns.* -[*.Test]*"
+        -filter:"+[*]DesignPatterns.* -[*.Tests]*"
         -oldStyle
 after_test:
   # Uploading to codecov the code coverage report
   - ps: |
       $env:PATH = 'C:\msys64\usr\bin;' + $env:PATH
-      Invoke-WebRequest -Uri 'https://codecov.io/bash' -OutFile codecov.sh
+      Invoke-WebRequest -Uri 'https:\\codecov.io\bash' -OutFile codecov.sh
       bash codecov.sh -f "coverage.xml"
 cache:
     - '%USERPROFILE%\.nuget\packages'

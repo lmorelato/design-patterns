@@ -1,10 +1,10 @@
-﻿using DesignPatterns.Code.Creational.Builder.Exercises;
+﻿using DesignPatterns.Creational.Builder.Exercises;
 
 using FluentAssertions;
 
 using Xunit;
 
-namespace DesignPatterns.Test.Creational.Builder.Exercises
+namespace DesignPatterns.Tests.Creational.Builder.Exercises
 {
     public class CodeBuilderTest
     {
