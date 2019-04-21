@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace DesignPatterns.Creational.Factory.Exercises
+namespace DesignPatterns.Creational.Factory
 {
-    public sealed class AnyPerson
+    public sealed class Customer
     {
-        private AnyPerson(int id, string name)
+        private Customer(int id, string name)
         {
             this.Id = id;
             this.Name = name;
@@ -18,14 +18,14 @@ namespace DesignPatterns.Creational.Factory.Exercises
         {
             private static int lastId;
 
-            public static AnyPerson Create(string name)
+            public static Customer Create(string name)
             {
                 if (string.IsNullOrWhiteSpace(name))
                 {
                     throw new ArgumentException("Value cannot be null or whitespace.", nameof(name));
                 }
 
-                return new AnyPerson(++Factory.lastId, name);
+                return new Customer(++Factory.lastId, name);
             }
         }
     }

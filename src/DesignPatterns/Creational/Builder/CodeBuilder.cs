@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DesignPatterns.Creational.Builder.Exercises
+namespace DesignPatterns.Creational.Builder
 {
     public sealed class CodeBuilder
     {
         private const int IndentSpaceSize = 4;
-
         private readonly IList<(string Name, string Type)> classFields;
-
         private readonly string className;
 
         public CodeBuilder(string className)
@@ -38,16 +36,16 @@ namespace DesignPatterns.Creational.Builder.Exercises
             sb.AppendLine("{");
             foreach (var f in this.classFields)
             {
-                sb.AppendLine($"{CodeBuilder.IndentFor(1)}public {f.Type} {f.Name};");
+                sb.AppendLine($"{Indent(1)}public {f.Type} {f.Name};");
+            }
+
+            string Indent(int n)
+            {
+                return new string(' ', CodeBuilder.IndentSpaceSize * n);
             }
 
             sb.AppendLine("}");
             return sb.ToString();
-        }
-
-        private static string IndentFor(int n)
-        {
-            return new string(' ', CodeBuilder.IndentSpaceSize * n);
         }
     }
 }

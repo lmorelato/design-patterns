@@ -1,12 +1,12 @@
-﻿using DesignPatterns.Creational.Builder.Exercises;
+﻿using DesignPatterns.Creational.Builder;
 
 using FluentAssertions;
 
 using Xunit;
 
-namespace DesignPatterns.Tests.Creational.Builder.Exercises
+namespace DesignPatterns.Tests.Creational.Builder
 {
-    public class CodeBuilderTest
+    public class SingletonTest
     {
         [Fact]
         public void AddField_ValidFields_PrintClass()
@@ -20,7 +20,7 @@ namespace DesignPatterns.Tests.Creational.Builder.Exercises
             // Assert
             result.Should().NotBeNull()
                 .And.NotBeEmpty()
-                .And.ContainAll("public class SomePerson", "public string Name;", "public int Age;");
+                .And.ContainAll("public class Person", "public string Name;", "public int Age;");
         }
 
         [Fact]
@@ -41,7 +41,7 @@ namespace DesignPatterns.Tests.Creational.Builder.Exercises
 
         private CodeBuilder BuildSample()
         {
-            var builder = new CodeBuilder("SomePerson").AddField("Name", "string").AddField("Age", "int");
+            var builder = new CodeBuilder("Person").AddField("Name", "string").AddField("Age", "int");
             return builder;
         }
     }

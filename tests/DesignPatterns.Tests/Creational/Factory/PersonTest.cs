@@ -1,24 +1,23 @@
-﻿using DesignPatterns.Creational.Factory.Exercises;
+﻿using DesignPatterns.Creational.Factory;
 
 using FluentAssertions;
 
 using Xunit;
 
-namespace DesignPatterns.Tests.Creational.Factory.Exercises
+namespace DesignPatterns.Tests.Creational.Factory
 {
-    public class PersonFactoryTest : BaseTest
+    public class PersonTest : BaseTest
     {
         [Fact]
         public void Create_ValidName_NewPerson()
         {
             // Arrange
-            var factory = new PersonFactory();
             var personOneName = this.Faker.Name.FullName();
             var personTwoName = this.Faker.Name.FullName();
 
             // Act
-            var personOne = factory.Create(personOneName);
-            var personTwo = factory.Create(personTwoName);
+            var personOne = Person.Create(personOneName);
+            var personTwo = Person.Create(personTwoName);
 
             // Assert
             personOne.Should().NotBeNull();

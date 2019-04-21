@@ -1,20 +1,20 @@
 ﻿using System;
 
-namespace DesignPatterns.Creational.Factory.Exercises
+namespace DesignPatterns.Creational.Factory
 {
-    public class PersonFactory
+    public class SubjectFactory
     {
         private int lastId;
 
-        public PersonForFactory Create(string name)
+        public Man Create(string name)
         {
-            return new PersonForFactory(++this.lastId, name);
+            return new Man(++this.lastId, name);
         }
     }
 
-    public sealed class PersonForFactory
+    public sealed class Man
     {
-        public PersonForFactory(int id, string name)
+        public Man(int id, string name)
         {
             if (string.IsNullOrEmpty(name))
             {

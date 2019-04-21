@@ -1,20 +1,20 @@
 ﻿using System;
 
-namespace DesignPatterns.Creational.Factory.Exercises
+namespace DesignPatterns.Creational.Factory
 {
-    public static class PersonStaticFactory
+    public static class HumanFactory
     {
         private static int lastId;
 
-        public static ThePerson Create(string name)
+        public static Human Create(string name)
         {
-            return new ThePerson(++PersonStaticFactory.lastId, name);
+            return new Human(++HumanFactory.lastId, name);
         }
     }
 
-    public sealed class ThePerson
+    public sealed class Human
     {
-        public ThePerson(int id, string name)
+        public Human(int id, string name)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
