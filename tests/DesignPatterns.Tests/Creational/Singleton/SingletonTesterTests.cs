@@ -12,7 +12,7 @@ namespace DesignPatterns.Tests.Creational.Singleton
         public void IsSingleton_SingletonObject_ReturnsTrue()
         {
             SingletonTester
-                .IsSingleton(() => TheBestSingleton.Instance)
+                .IsSingleton(() => SafeSingleton.Instance)
                 .Should()
                 .BeTrue();
         }
