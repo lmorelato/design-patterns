@@ -6,7 +6,7 @@ using Xunit;
 
 namespace DesignPatterns.Tests.Creational.Singleton
 {
-    public class SingletonTesterTests : BaseTest
+    public class SingletonTesterTest : BaseTest
     {
         [Fact]
         public void IsSingleton_SingletonObject_ReturnsTrue()

@@ -20,7 +20,9 @@
 
   <ItemGroup>
     <Folder Include="Behavioral\" />
-    <Folder Include="Structural\Adapter\" />
+    <Folder Include="Structural\Bridge\" />
+    <Folder Include="Structural\Composite\" />
+    <Folder Include="Structural\Decorator\" />
   </ItemGroup>
 
   <ItemGroup>

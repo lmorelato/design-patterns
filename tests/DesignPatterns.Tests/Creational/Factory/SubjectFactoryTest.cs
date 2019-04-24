@@ -6,7 +6,7 @@ using Xunit;
 
 namespace DesignPatterns.Tests.Creational.Factory
 {
-    public class SubjectFactoryTest : BaseTest
+    public class ExtensionMethodsTest : BaseTest
     {
         [Fact]
         public void Create_ValidName_NewSubject()
