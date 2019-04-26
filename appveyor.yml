@@ -27,7 +27,7 @@ before_build:
         /k:"lmorelato_design-patterns" 
         /o:"lmorelato-github" 
         /d:sonar.host.url="https://sonarcloud.io" 
-        /d:sonar.login=SONAR_TOKEN
+        /d:sonar.login="%SONAR_TOKEN%"
         /d:sonar.cs.opencover.reportsPaths="c:\projects\design-patterns\coverage.xml" 
 build_script:                      
     # Build & Publish
@@ -53,7 +53,7 @@ after_test:
       Invoke-WebRequest -Uri 'https://codecov.io/bash' -OutFile codecov.sh
       bash codecov.sh -f "coverage.xml"
   # SonarQube analyzer end
-  - cmd: dotnet sonarscanner end /d:sonar.login=SONAR_TOKEN
+  - cmd: dotnet sonarscanner end /d:sonar.login="%SONAR_TOKEN%"
 cache:
     - '%USERPROFILE%\.nuget\packages'
     - '%USERPROFILE%\.dotnet\tools'
