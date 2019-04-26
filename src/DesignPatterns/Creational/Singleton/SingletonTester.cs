@@ -2,7 +2,7 @@
 
 namespace DesignPatterns.Creational.Singleton
 {
-    public class SingletonTester
+    public static class SingletonTester
     {
         public static bool IsSingleton(Func<object> func)
         {

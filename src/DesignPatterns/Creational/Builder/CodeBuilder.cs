@@ -22,7 +22,6 @@ namespace DesignPatterns.Creational.Builder
             type = type ?? throw new ArgumentNullException(nameof(type));
             this.classFields.Add((name, type));
             return this;
-
         }
 
         public void Clear()
@@ -42,7 +41,7 @@ namespace DesignPatterns.Creational.Builder
 
             string Indent(int n)
             {
-                return new string(' ', CodeBuilder.IndentSpaceSize * n);
+                return new string(' ', IndentSpaceSize * n);
             }
 
             sb.AppendLine("}");

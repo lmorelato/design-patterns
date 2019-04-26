@@ -23,7 +23,7 @@ namespace DesignPatterns.Creational.Factory
                 throw new ArgumentException("Value cannot be null or whitespace.", nameof(name));
             }
 
-            return new Person(++Person.lastId, name);
+            return new Person(++lastId, name);
         }
     }
 }

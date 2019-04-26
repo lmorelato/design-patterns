@@ -4,9 +4,9 @@ namespace DesignPatterns.Tests
 {
     public class BaseTest
     {
-        public BaseTest()
+        protected BaseTest()
         {
-            this.Faker = new Faker("en");
+            this.Faker = new Faker();
         }
 
         protected Faker Faker { get; }

@@ -1,7 +1,7 @@
 ﻿// ReSharper disable NonReadonlyMemberInGetHashCode
 namespace DesignPatterns.Creational.Prototype
 {
-    public class Point : IPrototype<Point>
+    public sealed class Point : IPrototype<Point>
     {
         public int X { get; set; }
 
@@ -11,7 +11,6 @@ namespace DesignPatterns.Creational.Prototype
         {
             return this.MemberwiseClone() as Point;
         }
-
 
         public override bool Equals(object obj)
         {
@@ -41,7 +40,7 @@ namespace DesignPatterns.Creational.Prototype
             }
         }
 
-        protected bool Equals(Point other)
+        private bool Equals(Point other)
         {
             return this.X == other.X && this.Y == other.Y;
         }

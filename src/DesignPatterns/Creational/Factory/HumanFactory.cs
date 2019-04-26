@@ -8,7 +8,7 @@ namespace DesignPatterns.Creational.Factory
 
         public static Human Create(string name)
         {
-            return new Human(++HumanFactory.lastId, name);
+            return new Human(++lastId, name);
         }
     }
 

@@ -1,7 +1,7 @@
 ﻿// ReSharper disable NonReadonlyMemberInGetHashCode
 namespace DesignPatterns.Creational.Prototype
 {
-    public class Line : IPrototype<Line>
+    public sealed class Line : IPrototype<Line>
     {
         public Point Start { get; set; }
 
@@ -44,7 +44,7 @@ namespace DesignPatterns.Creational.Prototype
             }
         }
 
-        protected bool Equals(Line other)
+        private bool Equals(Line other)
         {
             return this.Start.Equals(other.Start) && this.End.Equals(other.End);
         }
