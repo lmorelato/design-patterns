@@ -22,6 +22,7 @@ namespace DesignPatterns.Creational.Builder
             type = type ?? throw new ArgumentNullException(nameof(type));
             this.classFields.Add((name, type));
             return this;
+
         }
 
         public void Clear()

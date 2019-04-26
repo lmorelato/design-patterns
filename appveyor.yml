@@ -18,17 +18,22 @@ init:
   - cmd: git config --global core.autocrlf true
 install:
   # Installing code coverage tools..
-  - nuget install OpenCover -OutputDirectory packages -Version 4.7.922
+  - nuget install OpenCover -OutputDirectory packages -Version 4.7.922  
+  # Installing sonar
+  - cmd: dotnet tool install --global dotnet-sonarscanner --version 4.6.0
 before_build:
     # Display .NET Core version
     - cmd: dotnet --version
-    # Display minimal restore text
-    # - cmd: dotnet restore .\src\DesignPatterns\DesignPatterns.csproj --verbosity m
-    # - cmd: dotnet restore .\tests\DesignPatterns.Tests\DesignPatterns.Tests.csproj --verbosity m
-build_script:
-    # - msbuild \verbosity:quiet DesignPatterns.sln
-    # output will be in .\src\DesignPatterns\bin\{platform}\{configuration}\netcoreapp2.2\publish
-    # - cmd: dotnet build .\src\DesignPatterns\DesignPatterns.csproj -c Release
+build_script:               
+    # sonar start
+    - cmd: dotnet sonarscanner begin 
+        /k:"lmorelato_design-patterns" 
+        /d:sonar.organization="lmorelato-github" 
+        /d:sonar.host.url="https://sonarcloud.io" 
+        /d:sonar.login="eb82da17e782d9556cb765b772b38b58e9a65d9e" 
+        /d:sonar.cs.opencover.reportsPaths="%cd%\coverage.xml"        
+    # build & publish
+    - cmd: dotnet build DesignPatterns.sln
     - cmd: dotnet publish .\src\DesignPatterns\DesignPatterns.csproj -c Release
 artifacts:
     - path: '.\src\DesignPatterns\bin\release\netcoreapp2.2\publish'
@@ -44,6 +49,8 @@ test_script:
         -filter:"+[*]* -[*.Tests]*"
         -oldStyle
 after_test:
+  # sonar end
+  - cmd: dotnet sonarscanner end /d:sonar.login="eb82da17e782d9556cb765b772b38b58e9a65d9e"
   # Uploading to codecov the code coverage report
   - ps: |
       $env:PATH = 'C:\msys64\usr\bin;' + $env:PATH
