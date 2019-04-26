@@ -1,0 +1,15 @@
+{
+  "ServerUri": "https://sonarcloud.io/",
+  "Organization": {
+    "Key": "lmorelato-github",
+    "Name": "Leandro Morelato"
+  },
+  "ProjectKey": "lmorelato_design-patterns",
+  "ProjectName": "design-patterns",
+  "Profiles": {
+    "CSharp": {
+      "ProfileKey": "AWocawjdcuf6R8N43gxn",
+      "ProfileTimestamp": "2019-03-26T01:47:46-04:00"
+    }
+  }
+}

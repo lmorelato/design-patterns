@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="SonarQube - design-patterns Sonar way" ToolsVersion="16.0">
+  <Include Path="..\..\.sonarlint\lmorelato_design-patternscsharp.ruleset" Action="Default" />
+</RuleSet>

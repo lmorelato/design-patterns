@@ -6,6 +6,14 @@
 	<ProjectGuid>{9441C278-DBED-47AF-BD3F-2EBBC11A0A22}</ProjectGuid>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <CodeAnalysisRuleSet>DesignPatterns.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <CodeAnalysisRuleSet>DesignPatterns.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
   <ItemGroup>
     <Folder Include="Behavioral\" />
     <Folder Include="Structural\Composite\" />
