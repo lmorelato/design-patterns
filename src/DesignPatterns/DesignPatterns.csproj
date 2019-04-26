@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <RootNamespace>DesignPatterns</RootNamespace>
+	<ProjectGuid>{9441C278-DBED-47AF-BD3F-2EBBC11A0A22}</ProjectGuid>
   </PropertyGroup>
 
   <ItemGroup>
