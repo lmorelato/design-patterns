@@ -332,3 +332,4 @@ ASALocalRun/
 # CI/CD/Code Review
 coverage.xml
 .sonarqube/
+.sonarlint/
