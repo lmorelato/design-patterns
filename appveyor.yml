@@ -28,7 +28,7 @@ build_script:
     # sonar start
     - cmd: dotnet sonarscanner begin 
         /k:"lmorelato_design-patterns" 
-        /d:sonar.organization="lmorelato-github" 
+        /o:"lmorelato-github" 
         /d:sonar.host.url="https://sonarcloud.io" 
         /d:sonar.login="eb82da17e782d9556cb765b772b38b58e9a65d9e" 
         /d:sonar.cs.opencover.reportsPaths="c:\projects\design-patterns\coverage.xml"        
