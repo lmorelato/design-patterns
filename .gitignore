@@ -333,3 +333,5 @@ ASALocalRun/
 coverage.xml
 .sonarqube/
 .sonarlint/
+.sonarlint
+.sonarqube
